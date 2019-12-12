@@ -7,6 +7,7 @@ using Microsoft.SqlServer.Server;
 using db40;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.IO.MemoryMappedFiles;
 
 public partial class UserDefinedFunctions
 {
@@ -61,6 +62,24 @@ public partial class UserDefinedFunctions
     #endregion
 
     #region [ TCP ]
+
+    [SqlFunction(DataAccess = DataAccessKind.Read)]
+    public static SqlString tcp___setup(String host, Int32 port)
+    {
+        try
+        {
+            const string NAME = "MyMappedFile";
+            MemoryMappedFile map = MemoryMappedFile.Create(MapProtection.PageReadWrite, MAX_BYTES, NAME);
+
+            MemoryMappedFile map2 = MemoryMappedFile.Open(MapAccess.FileMapRead, NAME);
+            map2.Close();
+            map.Close();
+        }
+        catch //(FileMapIOException e)
+        {
+            //Assert.Fail("Failed Named MMF: " + e);
+        }
+    }
 
     [SqlFunction(DataAccess = DataAccessKind.Read)]
     public static SqlBoolean tcp___number(String host, Int32 port, Double number)

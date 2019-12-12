@@ -4,6 +4,18 @@ using System.Text;
 
 namespace db40
 {
+    public struct TCP_HOST_IP
+    {
+        public int int_port;
+        public string str_host;
+
+        public TCP_HOST_IP(int port, string host)
+        {
+            int_port = port;
+            str_host = host;
+        }
+    }
+
     public class CLS_NOTIFY
     {
         public string str_actions { set; get; }

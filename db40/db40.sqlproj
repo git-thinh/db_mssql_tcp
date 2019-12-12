@@ -59,7 +59,6 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="MMF" />
     <Folder Include="mustache" />
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +74,6 @@
     <Compile Include="SqlStoredProcedure1.cs" />
     <Compile Include="SqlFunction1.cs" />
     <Compile Include="_FUN_VALID.cs" />
-    <Compile Include="MMF\FileMapIOException.cs" />
-    <Compile Include="MMF\MapViewStream.cs" />
-    <Compile Include="MMF\MemoryMappedFile.cs" />
-    <Compile Include="MMF\Win32APIs.cs" />
     <Compile Include="mustache\_config.cs" />
     <Compile Include="mustache\ArgumentCollection.cs" />
     <Compile Include="mustache\CompoundGenerator.cs" />
@@ -129,7 +124,6 @@
     <Compile Include="_FUN_TCP.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MMF\ReadMe.txt" />
     <None Include="mustache\_ReadMe.txt" />
     <None Include="mustache\mustache-sharp.csproj" />
   </ItemGroup>
