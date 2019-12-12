@@ -2,3 +2,5 @@
 /.git/
 /packages/
 *.gitattributes
+db40/db40.dbmdl
+db40/db40.jfm
