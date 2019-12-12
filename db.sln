@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hex20", "hex20\hex20.csproj", "{F47D116F-33CC-4F8F-AAF6-79F63FE62707}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "db40", "db40\db40.sqlproj", "{9E724B43-FD53-4BB8-BB2A-339CE0499A45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F47D116F-33CC-4F8F-AAF6-79F63FE62707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47D116F-33CC-4F8F-AAF6-79F63FE62707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F47D116F-33CC-4F8F-AAF6-79F63FE62707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F47D116F-33CC-4F8F-AAF6-79F63FE62707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E724B43-FD53-4BB8-BB2A-339CE0499A45}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5CC8FA4-E7B9-4D52-9130-B95E755B03E4}
+	EndGlobalSection
+EndGlobal
