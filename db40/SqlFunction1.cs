@@ -44,44 +44,35 @@ public partial class UserDefinedFunctions
     public static SqlString render___simple(String str_template, String str_json_value, Boolean bit_log_error = false)
     {
         string str_result = string.Empty;
+        Dictionary<string, object> obj = null;
+
         try {
-            Dictionary<string, object> obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(str_json_value);
-            str_result = _FUN_RENDER.Render(str_template, obj); 
+            obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(str_json_value);
         } catch(Exception ex) {
             if (bit_log_error) {
-                return new SqlString(JsonConvert.SerializeObject(new CLS_RESULT { str_message = ex.Message }));
+                return new SqlString(JsonConvert.SerializeObject(new CLS_RESULT { int_code = _ERROR.JSON_CONVERT, str_message = ex.Message }));
             }
         }
+
+        str_result = _FUN_RENDER.Render(str_template, obj);
         return new SqlString(str_result);
     }
-    
+
     #endregion
 
+    #region [ TCP ]
+
     [SqlFunction(DataAccess = DataAccessKind.Read)]
-    public static SqlBoolean cache___(String host, Int32 port, String message)
+    public static SqlBoolean tcp___number(String host, Int32 port, Double number)
     {
-        try
-        {
-            TcpClient client = new TcpClient();
-            //client.Connect("52.77.82.145", 80);
-            //client.Connect("127.0.0.1", 3456);
-            client.Connect(host, port);
-
-            //var client = new TcpClient("apimobi.f88.vn", 80);
-            //var client = new TcpClient("localhost", 9015);
-            //var client = new TcpClient("localhost", 3456);
-            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(message);
-            NetworkStream stream = client.GetStream();
-            stream.Write(buffer, 0, buffer.Length); //sends bytes to server
-
-            stream.Close();
-            client.Close();
-        }
-        catch
-        {
-            return new SqlBoolean(false);
-        }
-
-        return new SqlBoolean(true);
+        return _FUN_TCP.Send(host, port, number.ToString());
     }
+
+    [SqlFunction(DataAccess = DataAccessKind.Read)]
+    public static SqlBoolean tcp___text(String host, Int32 port, String message)
+    {
+        return _FUN_TCP.Send(host, port, message);
+    }
+
+    #endregion
 }

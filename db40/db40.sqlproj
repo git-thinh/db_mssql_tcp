@@ -124,6 +124,9 @@
     <Compile Include="mustache\WithTagDefinition.cs" />
     <Compile Include="_FUN_RENDER.cs" />
     <Compile Include="_MODELS.cs" />
+    <Compile Include="_ERROR.cs" />
+    <Compile Include="_MSG.cs" />
+    <Compile Include="_FUN_TCP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MMF\ReadMe.txt" />

@@ -23,7 +23,7 @@ namespace db40
         public bool ok { set; get; }
         public string str_message { set; get; }
         public object obj_data { set; get; }
-        public int? int_code { set; get; }
+        public _ERROR int_code { set; get; }
 
         public CLS_RESULT()
         {
