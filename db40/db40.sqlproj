@@ -59,6 +59,8 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="MMF" />
+    <Folder Include="mustache" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -73,5 +75,59 @@
     <Compile Include="SqlStoredProcedure1.cs" />
     <Compile Include="SqlFunction1.cs" />
     <Compile Include="_FUN_VALID.cs" />
+    <Compile Include="MMF\FileMapIOException.cs" />
+    <Compile Include="MMF\MapViewStream.cs" />
+    <Compile Include="MMF\MemoryMappedFile.cs" />
+    <Compile Include="MMF\Win32APIs.cs" />
+    <Compile Include="mustache\_config.cs" />
+    <Compile Include="mustache\ArgumentCollection.cs" />
+    <Compile Include="mustache\CompoundGenerator.cs" />
+    <Compile Include="mustache\ConditionTagDefinition.cs" />
+    <Compile Include="mustache\ContentTagDefinition.cs" />
+    <Compile Include="mustache\Context.cs" />
+    <Compile Include="mustache\ContextParameter.cs" />
+    <Compile Include="mustache\EachTagDefinition.cs" />
+    <Compile Include="mustache\ElifTagDefinition.cs" />
+    <Compile Include="mustache\ElseTagDefinition.cs" />
+    <Compile Include="mustache\FormatCompiler.cs" />
+    <Compile Include="mustache\Generator.cs" />
+    <Compile Include="mustache\HtmlFormatCompiler.cs" />
+    <Compile Include="mustache\IArgument.cs" />
+    <Compile Include="mustache\IfTagDefinition.cs" />
+    <Compile Include="mustache\IGenerator.cs" />
+    <Compile Include="mustache\IndexTagDefinition.cs" />
+    <Compile Include="mustache\InlineGenerator.cs" />
+    <Compile Include="mustache\InlineTagDefinition.cs" />
+    <Compile Include="mustache\KeyFoundEventArgs.cs" />
+    <Compile Include="mustache\KeyGenerator.cs" />
+    <Compile Include="mustache\KeyNotFoundEventArgs.cs" />
+    <Compile Include="mustache\MasterTagDefinition.cs" />
+    <Compile Include="mustache\NestedContext.cs" />
+    <Compile Include="mustache\NewlineTagDefinition.cs" />
+    <Compile Include="mustache\NumberArgument.cs" />
+    <Compile Include="mustache\PlaceholderArgument.cs" />
+    <Compile Include="mustache\PlaceholderFoundEventArgs.cs" />
+    <Compile Include="mustache\PropertyDictionary.cs" />
+    <Compile Include="mustache\RegexHelper.cs" />
+    <Compile Include="mustache\Scope.cs" />
+    <Compile Include="mustache\SetTagDefinition.cs" />
+    <Compile Include="mustache\StaticGenerator.cs" />
+    <Compile Include="mustache\StringArgument.cs" />
+    <Compile Include="mustache\Substitution.cs" />
+    <Compile Include="mustache\TagDefinition.cs" />
+    <Compile Include="mustache\TagFormattedEventArgs.cs" />
+    <Compile Include="mustache\TagParameter.cs" />
+    <Compile Include="mustache\UpcastDictionary.cs" />
+    <Compile Include="mustache\ValueRequestEventArgs.cs" />
+    <Compile Include="mustache\VariableArgument.cs" />
+    <Compile Include="mustache\VariableFoundEventArgs.cs" />
+    <Compile Include="mustache\WithTagDefinition.cs" />
+    <Compile Include="_FUN_RENDER.cs" />
+    <Compile Include="_MODELS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MMF\ReadMe.txt" />
+    <None Include="mustache\_ReadMe.txt" />
+    <None Include="mustache\mustache-sharp.csproj" />
   </ItemGroup>
 </Project>

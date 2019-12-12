@@ -5,6 +5,8 @@ using System.Data.SqlTypes;
 using System.Net.Sockets;
 using Microsoft.SqlServer.Server;
 using db40;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 public partial class UserDefinedFunctions
 {
@@ -34,6 +36,25 @@ public partial class UserDefinedFunctions
         return new SqlBoolean(ok);
     }
 
+    #endregion
+
+    #region [ RENDER ]
+
+    [SqlFunction(DataAccess = DataAccessKind.None)]
+    public static SqlString render___simple(String str_template, String str_json_value, Boolean bit_log_error = false)
+    {
+        string str_result = string.Empty;
+        try {
+            Dictionary<string, object> obj = JsonConvert.DeserializeObject<Dictionary<string, object>>(str_json_value);
+            str_result = _FUN_RENDER.Render(str_template, obj); 
+        } catch(Exception ex) {
+            if (bit_log_error) {
+                return new SqlString(JsonConvert.SerializeObject(new CLS_RESULT { str_message = ex.Message }));
+            }
+        }
+        return new SqlString(str_result);
+    }
+    
     #endregion
 
     [SqlFunction(DataAccess = DataAccessKind.Read)]
