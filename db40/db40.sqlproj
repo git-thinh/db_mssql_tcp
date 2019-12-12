@@ -72,6 +72,6 @@
   <ItemGroup>
     <Compile Include="SqlStoredProcedure1.cs" />
     <Compile Include="SqlFunction1.cs" />
-    <Compile Include="FUN_VALID.cs" />
+    <Compile Include="_FUN_VALID.cs" />
   </ItemGroup>
 </Project>

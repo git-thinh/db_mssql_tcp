@@ -4,7 +4,7 @@ using System.Text;
 
 namespace db40
 {
-    public static class FUN_VALID
+    public static class _FUN_VALID
     {
         public static bool Is_Numeric(object value)
         {
