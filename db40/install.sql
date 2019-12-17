@@ -9,13 +9,13 @@ go
 --==============================================================================
 use [master]
 go
-alter authorization on database::[demo] to [sa]; 
+alter authorization on database::[POL_TEST] to [sa]; 
 go
-alter database [demo] set trustworthy on; 
+alter database [POL_TEST] set trustworthy on; 
 go
 
 --==============================================================================
-use [demo]
+use [POL_TEST]
 go
 
 --==============================================================================
