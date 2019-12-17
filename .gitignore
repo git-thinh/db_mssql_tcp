@@ -8,3 +8,4 @@ db40/install.v1.sql
 db40/install.v1.table.data.sql
 test_protobufjs/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 test_protobufjs/obj/Debug/test_protobufjs.csprojAssemblyReference.cache
+protobuf/proto-buffer-api/
