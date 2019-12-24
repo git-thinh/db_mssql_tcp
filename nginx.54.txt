@@ -1,0 +1,100 @@
+﻿worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+stream {
+    upstream tcp_backend { server 127.0.0.1:3456; }
+    server { listen 80; proxy_pass tcp_backend; }
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    
+	server {
+        listen       1001; server_name  localhost;
+        location / { root   C:/Release/POL/webui-20191216; index  index.html index.htm; }
+    }
+	
+    server {
+		listen 443 ssl; server_name  localhost;
+		ssl_certificate C:/nginx/ssl/STAR_f88_vn.crt;
+		ssl_certificate_key C:/nginx/ssl/private.key;
+
+		#----------------------------------------------------------------------
+		# /test/cache/
+		location /test/cache/ { proxy_pass http://127.0.0.1:1003/; }
+
+		#----------------------------------------------------------------------
+		# Resource admin: /login, /pawn-online ...
+		#location /init.js { proxy_pass http://127.0.0.1:1001/init.js; }
+		#location /worker.js { proxy_pass http://127.0.0.1:1001/worker.js; }
+		#location /_lib/ { proxy_pass http://127.0.0.1:1001/_lib/; }
+		#location /_sw/ { proxy_pass http://127.0.0.1:1001/_sw/; }
+		#location /_app/ { proxy_pass http://127.0.0.1:1001/_app/; }
+		
+		#location /login { proxy_pass http://127.0.0.1:1001/; }
+		#location /logout { proxy_pass http://127.0.0.1:1001/; }
+		#location /pawn-online { proxy_pass http://127.0.0.1:1001/; }
+		
+		#----------------------------------------------------------------------
+
+		location /login { proxy_pass http://127.0.0.1:1001/login.html; }
+		location /logout { proxy_pass http://127.0.0.1:1001/; }
+		location /pawn-online { proxy_pass http://127.0.0.1:1001/pawn-online.html; }
+
+		#----------------------------------------------------------------------
+		# Site home f88.vn
+		location / { proxy_pass http://127.0.0.1:1001/; }
+		
+		#----------------------------------------------------------------------
+		# API
+		location /subscribe { proxy_pass http://127.0.0.1:3500/subscribe; }
+		location /pol/job/ { proxy_pass http://127.0.0.1:3500/job/; }
+		location /pol/biz/ { proxy_pass http://127.0.0.1:3500/biz/; }
+		location /pol/api/ { proxy_pass http://127.0.0.1:3500/api/; }
+		
+		
+		location /users/state { proxy_pass http://127.0.0.1:3500/users/state; }
+		
+		location /get-notify/ { 
+		
+			proxy_pass http://127.0.0.1:3500/get-notify/; 
+			
+			proxy_buffering off;
+			proxy_cache off;
+			proxy_set_header Host $host;
+
+			proxy_set_header Connection '';
+			proxy_http_version 1.1;
+			chunked_transfer_encoding off;
+		}
+		
+		location ~* \.io {
+		
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header Host $http_host;
+			proxy_set_header X-NginX-Proxy false;
+
+			proxy_pass http://127.0.0.1:3500; 
+			proxy_redirect off;
+
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection "upgrade";
+		}
+		
+		#----------------------------------------------------------------------
+		# CouchDB
+		location /db/info { proxy_pass http://127.0.0.1:5984/; }
+		location /_session { proxy_pass http://127.0.0.1:5984/_session; }
+		location /_all_dbs { proxy_pass http://127.0.0.1:5984/_all_dbs; }
+		location /db_test/_local/ { proxy_pass http://127.0.0.1:5984/db_test/_local/; }
+		location /db_test { proxy_pass http://127.0.0.1:5984/db_test; }
+		location /db/ { proxy_pass http://127.0.0.1:5984/_utils/; }			
+		
+    }
+}

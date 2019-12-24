@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.IO.MemoryMappedFiles;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+using System.Net.Mail;
 
 public partial class UserDefinedFunctions
 {
@@ -97,7 +98,7 @@ public partial class UserDefinedFunctions
 
     #endregion
 
-
+    
 
     #region [ VERSION OLD ]
 
